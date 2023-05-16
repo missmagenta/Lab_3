@@ -7,25 +7,33 @@ import java.util.Objects;
 public class Dialog {
     private Conversationable speaker1;
     private Conversationable speaker2;
+    private String topic;
+
+    public Dialog(Conversationable speaker1, Conversationable speaker2) {
+        this.speaker1 = speaker1;
+        this.speaker2 = speaker2;
+    }
 
     public void addParticipant(Conversationable speaker) {
-        if (speaker1 == null) {
-            speaker1 = speaker;
-        } else if (speaker2 == null) {
-            speaker2 = speaker;
+        if ((speaker == speaker1) || (speaker == speaker2)) {
+            System.out.println(speaker.getName() + " entered the conversation");
         } else {
             System.out.println("This dialog already has 2 participants");
             return;
         }
         speaker.setConversation(this);
-        System.out.println(speaker.getName() + " entered the conversation");
     }
 
-    public void say(Conversationable speaker, String message) {
-        if (speaker.equals(speaker1) || speaker.equals(speaker2)) {
+    public void say(Conversationable speaker, String message, Conversationable listener) {
+        boolean isSpeakerParticipant = (speaker.equals(speaker1) || speaker.equals(speaker2));
+        boolean isListenerParticipant = (listener.equals(speaker1) || listener.equals(speaker2));
+        if (isSpeakerParticipant && isListenerParticipant) {
             System.out.println(speaker.getName() + ": " + message);
+        } else if (isSpeakerParticipant || isListenerParticipant) {
+            String notParticipantName = isSpeakerParticipant ? listener.getName() : speaker.getName();
+            System.out.println(notParticipantName + " is not a participant of this conversation");
         } else {
-            System.out.println("Not a participant of this conversation");
+            System.out.println("Neither " + speaker.getName() + " nor " + listener.getName() + " are participants of this conversation");
         }
     }
 
@@ -35,7 +43,7 @@ public class Dialog {
         } else if (speaker2 != null && speaker2.equals(speaker)) {
             speaker2 = null;
         } else {
-            System.out.println(speaker.getName() + " was not a participant of this dialog");
+            System.out.println(speaker.getName() + " was not a participant of this conversation");
             return;
         }
         speaker.setConversation(null);
@@ -43,6 +51,7 @@ public class Dialog {
     }
 
     public void setTopic(Conversationable speaker, String topic) {
+        this.topic = topic;
         System.out.println(speaker.getName() + " set the topic - " + topic);
     }
 

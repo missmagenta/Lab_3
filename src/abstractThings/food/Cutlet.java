@@ -8,8 +8,8 @@ public class Cutlet extends SpaceFood {
     @Override
     public String toString() {
         return "Cutlet{" +
-                "foodName='" + foodName + '\'' +
-                ", grade='" + grade + '\'' +
+                "foodName='" + getFoodName() + '\'' +
+                ", grade='" + getGrade() + '\'' +
                 '}';
     }
 }

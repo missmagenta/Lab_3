@@ -7,11 +7,11 @@ import abstractThings.*;
 import java.util.Objects;
 
 public class SpaceTraveler extends Character implements Eatable, Conversationable {
-    protected boolean hungry;
-    protected boolean inWeightlessness;
-    protected Dialog conversation;
-    protected SpaceFood currentConsumableFood;
-    protected Location location;
+    private boolean hungry;
+    private boolean inWeightlessness;
+    private Dialog conversation;
+    private SpaceFood currentConsumableFood;
+    private Location location;
 
     public SpaceTraveler(String name) {
         super(name);
@@ -19,7 +19,6 @@ public class SpaceTraveler extends Character implements Eatable, Conversationabl
 
     public boolean isHungry() {
         return this.hungry;
-
     }
 
     public void setHungry(boolean hungry) {

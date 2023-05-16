@@ -8,8 +8,8 @@ public class Sausage extends SpaceFood {
     @Override
     public String toString() {
         return "Sausage{" +
-                "foodName='" + foodName + '\'' +
-                ", grade='" + grade + '\'' +
+                "foodName='" + getFoodName() + '\'' +
+                ", grade='" + getGrade() + '\'' +
                 '}';
     }
 }

@@ -3,11 +3,11 @@ package abstractThings.food;
 import java.util.Objects;
 
 public class SpaceFood {
-    protected String foodName;
-    protected FoodGrade grade;
-    protected Integer totalPortions;
-    protected int consumedPortionsByFoodType;
-    protected static int totalConsumedPortions;
+    private String foodName;
+    private FoodGrade grade = FoodGrade.UNKNOWN;
+    private Integer totalPortions;
+    private int consumedPortionsByFoodType;
+    private static int totalConsumedPortions;
 
     public SpaceFood(String foodName) {
         this.foodName = foodName;
@@ -32,6 +32,10 @@ public class SpaceFood {
 
     public void setGrade(FoodGrade value) {
         this.grade = value;
+    }
+
+    public void setTotalPortions(Integer totalPortions) {
+        this.totalPortions = totalPortions;
     }
 
     public int getRemainingPortionCount() {

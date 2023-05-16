@@ -13,7 +13,7 @@ public class Main {
         SpaceTraveler traveler = new SpaceTraveler("Space Travelers");
         Ponchik ponchik = new Ponchik("Ponchik");
         Neznaika neznaika = new Neznaika("Neznaika");
-        Dialog dialog = new Dialog();
+        Dialog dialog = new Dialog(ponchik, neznaika);
         SpaceFood spaceDish = new SpaceFood("Space dish");
         SpaceFood sausage = new Sausage();
         SpaceFood cutlet = new Cutlet();
@@ -22,18 +22,18 @@ public class Main {
 
         dialog.addParticipant(ponchik);
         dialog.say(ponchik, "Ну что ж, поскольку мы летим на Луну и назад все пути отрезаны, теперь у нас только одна задача:" +
-                "пробраться обратно в пищевой отсек и как следует позавтракать.");
+                "пробраться обратно в пищевой отсек и как следует позавтракать.", neznaika);
         dialog.setTopic(ponchik, "Breakfast in Space");
         dialog.addParticipant(neznaika);
-        dialog.say(neznaika, "Мы ведь только что завтракали.");
+        dialog.say(neznaika, "Мы ведь только что завтракали.", ponchik);
         neznaika.contradict(ponchik);
         dialog.say(ponchik, "Так разве это был настоящий завтрак? " +
-                "Этот завтрак был пробный, так сказать, черновой, тренировочный.");
-        dialog.say(neznaika, " Как это — тренировочный?");
+                "Этот завтрак был пробный, так сказать, черновой, тренировочный.", neznaika);
+        dialog.say(neznaika, " Как это — тренировочный?", ponchik);
         dialog.say(ponchik, "Ну, мы ведь завтракали в космосе первый раз. " +
                 "Значит, вроде как бы не завтракали, а только как бы осваивали процесс питания в космосе, то есть тренировались. " +
-                "Зато теперь, когда тренировка закончена, мы можем позавтракать по-настоящему");
-        dialog.say(neznaika, "Что ж, это, пожалуй, можно.");
+                "Зато теперь, когда тренировка закончена, мы можем позавтракать по-настоящему", neznaika);
+        dialog.say(neznaika, "Что ж, это, пожалуй, можно.", ponchik);
 
         dialog.removeParticipant(neznaika);
         dialog.removeParticipant(ponchik);
